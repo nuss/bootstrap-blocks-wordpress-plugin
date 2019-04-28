@@ -9,4 +9,10 @@
 		padding-bottom: 5rem;
 		background: white;
 	}
+
+	&[data-bg-color="primary"] {
+		> .editor-block-list__block-edit::before {
+			background-color: #007bff;
+		}
+	}
 }
