@@ -35,16 +35,31 @@ if ( ! class_exists( '\WP_Bootstrap_Blocks\Column\Column_Block_Type', false ) ) 
 			'sizeXl' => array(
 				'type' => 'number',
 			),
+			'indentXl' => array(
+				'type' => 'number',
+			),
 			'sizeLg' => array(
+				'type' => 'number',
+			),
+			'indentLg' => array(
 				'type' => 'number',
 			),
 			'sizeMd' => array(
 				'type' => 'number',
 			),
+			'indentMd' => array(
+				'type' => 'number',
+			),
 			'sizeSm' => array(
 				'type' => 'number',
 			),
+			'indentSm' => array(
+				'type' => 'number',
+			),
 			'sizeXs' => array(
+				'type' => 'number',
+			),
+			'indentXs' => array(
 				'type' => 'number',
 			),
 			'columnID' => array(
@@ -62,10 +77,15 @@ if ( ! class_exists( '\WP_Bootstrap_Blocks\Column\Column_Block_Type', false ) ) 
 		 */
 		protected $default_attributes = array(
 			'sizeXl' => 0,
+			'indentXl' => 0,
 			'sizeLg' => 0,
+			'indentLg' => 0,
 			'sizeMd' => 0,
+			'indentMd' => 0,
 			'sizeSm' => 0,
+			'indentSm' => 0,
 			'sizeXs' => 12,
+			'indentXs' => 0,
 			'columnID' => '',
 			'bgColor' => '',
 		);

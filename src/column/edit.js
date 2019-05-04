@@ -45,7 +45,19 @@ const ColumnSizeRangeControl = ( { label, attributeName, value, setAttributes } 
 class BootstrapColumnEdit extends Component {
 	render() {
 		const { attributes, className, setAttributes } = this.props;
-		const { columnID, sizeXl, sizeLg, sizeMd, sizeSm, sizeXs } = attributes;
+		const {
+			columnID,
+			sizeXl,
+			indentXl,
+			sizeLg,
+			indentLg,
+			sizeMd,
+			indentMd,
+			sizeSm,
+			indentSm,
+			sizeXs,
+			indentXs
+		} = attributes;
 
 		return (
 			<Fragment>
@@ -61,11 +73,25 @@ class BootstrapColumnEdit extends Component {
 							setAttributes={ setAttributes }
 						/>
 						<ColumnSizeRangeControl
+							label={ __( 'Xl Columns offset', 'wp-bootstrap-blocks' ) }
+							attributeName="indentXl"
+							value={ indentXl }
+							setAttributes={ setAttributes }
+						/>
+						<hr/>
+						<ColumnSizeRangeControl
 							label={ __( 'Lg Columns', 'wp-bootstrap-blocks' ) }
 							attributeName="sizeLg"
 							value={ sizeLg }
 							setAttributes={ setAttributes }
 						/>
+						<ColumnSizeRangeControl
+							label={ __( 'Lg Columns offset', 'wp-bootstrap-blocks' ) }
+							attributeName="indentLg"
+							value={ indentLg }
+							setAttributes={ setAttributes }
+						/>
+						<hr/>
 						<ColumnSizeRangeControl
 							label={ __( 'Md Columns', 'wp-bootstrap-blocks' ) }
 							attributeName="sizeMd"
@@ -73,15 +99,35 @@ class BootstrapColumnEdit extends Component {
 							setAttributes={ setAttributes }
 						/>
 						<ColumnSizeRangeControl
+							label={ __( 'Md Columns offset', 'wp-bootstrap-blocks' ) }
+							attributeName="indentMd"
+							value={ indentMd }
+							setAttributes={ setAttributes }
+						/>
+						<hr/>
+						<ColumnSizeRangeControl
 							label={ __( 'Sm Columns', 'wp-bootstrap-blocks' ) }
 							attributeName="sizeSm"
 							value={ sizeSm }
 							setAttributes={ setAttributes }
 						/>
 						<ColumnSizeRangeControl
+							label={ __( 'Sm Columns offset', 'wp-bootstrap-blocks' ) }
+							attributeName="indentSm"
+							value={ indentSm }
+							setAttributes={ setAttributes }
+						/>
+						<hr/>
+						<ColumnSizeRangeControl
 							label={ __( 'Xs Columns', 'wp-bootstrap-blocks' ) }
 							attributeName="sizeXs"
 							value={ sizeXs }
+							setAttributes={ setAttributes }
+						/>
+						<ColumnSizeRangeControl
+							label={ __( 'Xs Columns offset', 'wp-bootstrap-blocks' ) }
+							attributeName="indentXs"
+							value={ indentXs }
 							setAttributes={ setAttributes }
 						/>
 					</PanelBody>
