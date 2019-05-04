@@ -43,9 +43,12 @@ if ( array_key_exists( 'sizeXl', $attributes ) && $attributes['sizeXl'] > 0 ) {
 if ( array_key_exists( 'className', $attributes ) ) {
 	$classes = array_merge( $classes, explode( ' ', $attributes['className'] ) );
 }
+if ( array_key_exists('columnID', $attributes ) ) {
+	$id = $attributes['columnID'];
+}
 
 $classes = apply_filters( 'wp_bootstrap_blocks_column_classes', $classes, $attributes );
 ?>
-<div class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>">
+<div <?php if ( strlen( $id ) ) { ?>id="<?php echo esc_attr( $id ); ?>" <?php } ?>class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>">
 	<?php echo $content; // phpcs:ignore ?>
 </div>

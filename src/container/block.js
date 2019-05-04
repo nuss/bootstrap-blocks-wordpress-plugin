@@ -8,7 +8,7 @@ import './editor.scss';
 const { __ } = wp.i18n; // Import __() from wp.i18n
 const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
 const { InnerBlocks, InspectorControls } = wp.editor;
-const { SelectControl, CheckboxControl, PanelBody } = wp.components;
+const { SelectControl, CheckboxControl, TextControl, PanelBody } = wp.components;
 const { Fragment } = wp.element;
 const { applyFilters } = wp.hooks;
 
@@ -37,6 +37,20 @@ const marginOptions = [
 	},
 	...customMarginOptions,
 ];
+
+const ContainerIDField = ( { label, attributeName, value, setAttributes } ) => {
+	return (
+		<TextControl
+			label={ label }
+			value={ value }
+			onChange={ ( idString ) => {
+				setAttributes( {
+					[ attributeName ]: idString
+				} )
+			} }
+		/>
+	);
+};
 
 registerBlockType( 'wp-bootstrap-blocks/container', {
 	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.

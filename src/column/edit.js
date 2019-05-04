@@ -3,7 +3,7 @@
  */
 const { __ } = wp.i18n;
 const { InnerBlocks, InspectorControls } = wp.editor;
-const { PanelBody, RangeControl } = wp.components;
+const { PanelBody, RangeControl, TextControl } = wp.components;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
 
@@ -11,6 +11,20 @@ const { compose } = wp.compose;
  * Internal dependencies
  */
 import { withBlockEditContext } from '../block-edit-context';
+
+const ColumnIDField = ( { label, attributeName, value, setAttributes } ) => {
+	return (
+		<TextControl
+			label={ label }
+			value={ value }
+			onChange={ ( idString ) => {
+				setAttributes( {
+					[ attributeName ]: idString
+				} )
+			} }
+		/>
+	);
+};
 
 const ColumnSizeRangeControl = ( { label, attributeName, value, setAttributes } ) => {
 	return (
@@ -31,7 +45,7 @@ const ColumnSizeRangeControl = ( { label, attributeName, value, setAttributes } 
 class BootstrapColumnEdit extends Component {
 	render() {
 		const { attributes, className, setAttributes } = this.props;
-		const { sizeXl, sizeLg, sizeMd, sizeSm, sizeXs } = attributes;
+		const { columnID, sizeXl, sizeLg, sizeMd, sizeSm, sizeXs } = attributes;
 
 		return (
 			<Fragment>
@@ -68,6 +82,17 @@ class BootstrapColumnEdit extends Component {
 							label={ __( 'Xs Columns', 'wp-bootstrap-blocks' ) }
 							attributeName="sizeXs"
 							value={ sizeXs }
+							setAttributes={ setAttributes }
+						/>
+					</PanelBody>
+					<PanelBody
+						title={ __('Column ID', 'wp-bootstrap-blocks') }
+						initialOpen={ false }
+					>
+						<ColumnIDField
+							label={ __('Column ID', 'wp-bootstrap-blocks') }
+							attributeName="columnID"
+							value={ columnID }
 							setAttributes={ setAttributes }
 						/>
 					</PanelBody>

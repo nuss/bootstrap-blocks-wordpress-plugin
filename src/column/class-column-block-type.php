@@ -47,6 +47,9 @@ if ( ! class_exists( '\WP_Bootstrap_Blocks\Column\Column_Block_Type', false ) ) 
 			'sizeXs' => array(
 				'type' => 'number',
 			),
+			'columnID' => array(
+				'type' => 'string',
+			),
 			'bgColor' => array(
 				'type' => 'string',
 			),
@@ -63,6 +66,7 @@ if ( ! class_exists( '\WP_Bootstrap_Blocks\Column\Column_Block_Type', false ) ) 
 			'sizeMd' => 0,
 			'sizeSm' => 0,
 			'sizeXs' => 12,
+			'columnID' => '',
 			'bgColor' => '',
 		);
 	}

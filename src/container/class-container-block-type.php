@@ -38,6 +38,9 @@ if ( ! class_exists( '\WP_Bootstrap_Blocks\Container\Container_Block_Type', fals
 			'marginAfter' => array(
 				'type' => 'string',
 			),
+			'containerID' => array(
+				'type' => 'string',
+			),
 		);
 
 		/**
@@ -48,6 +51,7 @@ if ( ! class_exists( '\WP_Bootstrap_Blocks\Container\Container_Block_Type', fals
 		protected $default_attributes = array(
 			'isFluid' => false,
 			'marginAfter' => 'mb-2',
+			'containerID' => '',
 		);
 	}
 
