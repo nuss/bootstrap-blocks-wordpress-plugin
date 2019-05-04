@@ -70,7 +70,7 @@ registerBlockType( 'wp-bootstrap-blocks/container', {
 	// attributes are defined server side with register_block_type(). This is needed to make default attributes available in the blocks render callback.
 
 	edit( { className, attributes, setAttributes } ) {
-		const { isFluid, marginAfter } = attributes;
+		const { containerID, isFluid, marginAfter } = attributes;
 
 		// Ensure that isFluid value is set (when block gets added value is undefined -> use default value in this case)
 		if ( isFluid === undefined ) {
@@ -94,6 +94,20 @@ registerBlockType( 'wp-bootstrap-blocks/container', {
 							options={ marginOptions }
 							onChange={ ( selectedMargin ) => {
 								setAttributes( { marginAfter: selectedMargin } );
+							} }
+						/>
+					</PanelBody>
+					<PanelBody
+						title={ __('Container ID', 'wp-bootstrap-blocks') }
+						initialOpen={ false }
+					>
+						<ContainerIDField
+							label={ __('Unique ID of the html element', 'wp-bootstrap-blocks') }
+							attributeName="containerID"
+							value={ containerID }
+							setAttributes={ setAttributes }
+							onChange={ ( containerID ) => {
+								setAttributes( { containerID: containerID } )
 							} }
 						/>
 					</PanelBody>

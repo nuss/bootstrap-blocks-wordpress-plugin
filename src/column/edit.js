@@ -90,7 +90,7 @@ class BootstrapColumnEdit extends Component {
 						initialOpen={ false }
 					>
 						<ColumnIDField
-							label={ __('Column ID', 'wp-bootstrap-blocks') }
+							label={ __('Unique ID of the html element', 'wp-bootstrap-blocks') }
 							attributeName="columnID"
 							value={ columnID }
 							setAttributes={ setAttributes }
