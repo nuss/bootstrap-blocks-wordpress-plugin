@@ -106,9 +106,6 @@ registerBlockType( 'wp-bootstrap-blocks/container', {
 							attributeName="containerID"
 							value={ containerID }
 							setAttributes={ setAttributes }
-							onChange={ ( containerID ) => {
-								setAttributes( { containerID: containerID } )
-							} }
 						/>
 					</PanelBody>
 				</InspectorControls>
