@@ -7,6 +7,20 @@ const { CheckboxControl, ColorPalette, PanelBody, RangeControl, SelectControl } 
 const { Component, Fragment } = wp.element;
 const { applyFilters } = wp.hooks;
 
+const ColumnIDField = ( { label, attributeName, value, setAttributes } ) => {
+	return (
+		<TextControl
+			label={ label }
+			value={ value }
+			onChange={ ( idString ) => {
+				setAttributes( {
+					[ attributeName ]: idString
+				} )
+			} }
+		/>
+	);
+};
+
 const ColumnSizeRangeControl = ( { label, attributeName, value, setAttributes } ) => {
 	return (
 		<RangeControl
@@ -42,7 +56,22 @@ paddingOptions = applyFilters( 'wpBootstrapBlocks.column.paddingOptions', paddin
 export default class BootstrapColumnEdit extends Component {
 	render() {
 		const { attributes, className, setAttributes } = this.props;
-		const { sizeXl, sizeLg, sizeMd, sizeSm, sizeXs, bgColor, padding, centerContent } = attributes;
+		const {
+			columnID,
+			sizeXl,
+			indentXl,
+			sizeLg,
+			indentLg,
+			sizeMd,
+			indentMd,
+			sizeSm,
+			indentSm,
+			sizeXs,
+			indentXs,
+			bgColor,
+			padding,
+			centerContent
+		} = attributes;
 
 		return (
 			<Fragment>
@@ -58,11 +87,25 @@ export default class BootstrapColumnEdit extends Component {
 							setAttributes={ setAttributes }
 						/>
 						<ColumnSizeRangeControl
+							label={ __( 'Xl Columns offset', 'wp-bootstrap-blocks' ) }
+							attributeName="indentXl"
+							value={ indentXl }
+							setAttributes={ setAttributes }
+						/>
+						<hr/>
+						<ColumnSizeRangeControl
 							label={ __( 'Lg Columns', 'wp-bootstrap-blocks' ) }
 							attributeName="sizeLg"
 							value={ sizeLg }
 							setAttributes={ setAttributes }
 						/>
+						<ColumnSizeRangeControl
+							label={ __( 'Lg Columns offset', 'wp-bootstrap-blocks' ) }
+							attributeName="indentLg"
+							value={ indentLg }
+							setAttributes={ setAttributes }
+						/>
+						<hr/>
 						<ColumnSizeRangeControl
 							label={ __( 'Md Columns', 'wp-bootstrap-blocks' ) }
 							attributeName="sizeMd"
@@ -70,15 +113,46 @@ export default class BootstrapColumnEdit extends Component {
 							setAttributes={ setAttributes }
 						/>
 						<ColumnSizeRangeControl
+							label={ __( 'Md Columns offset', 'wp-bootstrap-blocks' ) }
+							attributeName="indentMd"
+							value={ indentMd }
+							setAttributes={ setAttributes }
+						/>
+						<hr/>
+						<ColumnSizeRangeControl
 							label={ __( 'Sm Columns', 'wp-bootstrap-blocks' ) }
 							attributeName="sizeSm"
 							value={ sizeSm }
 							setAttributes={ setAttributes }
 						/>
 						<ColumnSizeRangeControl
+							label={ __( 'Sm Columns offset', 'wp-bootstrap-blocks' ) }
+							attributeName="indentSm"
+							value={ indentSm }
+							setAttributes={ setAttributes }
+						/>
+						<hr/>
+						<ColumnSizeRangeControl
 							label={ __( 'Xs Columns', 'wp-bootstrap-blocks' ) }
 							attributeName="sizeXs"
 							value={ sizeXs }
+							setAttributes={ setAttributes }
+						/>
+						<ColumnSizeRangeControl
+							label={ __( 'Xs Columns offset', 'wp-bootstrap-blocks' ) }
+							attributeName="indentXs"
+							value={ indentXs }
+							setAttributes={ setAttributes }
+						/>
+					</PanelBody>
+					<PanelBody
+						title={ __('Column ID', 'wp-bootstrap-blocks') }
+						initialOpen={ false }
+					>
+						<ColumnIDField
+							label={ __('Unique ID of the html element', 'wp-bootstrap-blocks') }
+							attributeName="columnID"
+							value={ columnID }
 							setAttributes={ setAttributes }
 						/>
 					</PanelBody>

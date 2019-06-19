@@ -35,9 +35,12 @@ if ( array_key_exists( 'marginAfter', $attributes ) && ! empty( $attributes['mar
 if ( array_key_exists( 'className', $attributes ) ) {
 	array_push( $classes, $attributes['className'] );
 }
+if ( array_key_exists( 'containerID', $attributes ) ) {
+	$id = $attributes['containerID'];
+}
 
 $classes = apply_filters( 'wp_bootstrap_blocks_container_classes', $classes, $attributes );
 ?>
-<div class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>">
+<div <?php if ( strlen( $id ) ) { ?>id="<?php echo esc_attr( $id ) ?>" <?php } ?>class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>">
 	<?php echo $content; // phpcs:ignore ?>
 </div>

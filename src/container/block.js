@@ -8,7 +8,7 @@ import './editor.scss';
 const { __ } = wp.i18n; // Import __() from wp.i18n
 const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
 const { InnerBlocks, InspectorControls } = wp.editor;
-const { SelectControl, CheckboxControl, PanelBody } = wp.components;
+const { SelectControl, CheckboxControl, TextControl, PanelBody } = wp.components;
 const { Fragment } = wp.element;
 const { applyFilters } = wp.hooks;
 
@@ -38,6 +38,20 @@ const marginOptions = [
 	...customMarginOptions,
 ];
 
+const ContainerIDField = ( { label, attributeName, value, setAttributes } ) => {
+	return (
+		<TextControl
+			label={ label }
+			value={ value }
+			onChange={ ( idString ) => {
+				setAttributes( {
+					[ attributeName ]: idString
+				} )
+			} }
+		/>
+	);
+};
+
 registerBlockType( 'wp-bootstrap-blocks/container', {
 	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
 	title: __( 'Container', 'wp-bootstrap-blocks' ), // Block title.
@@ -56,7 +70,7 @@ registerBlockType( 'wp-bootstrap-blocks/container', {
 	// attributes are defined server side with register_block_type(). This is needed to make default attributes available in the blocks render callback.
 
 	edit( { className, attributes, setAttributes } ) {
-		const { isFluid, marginAfter } = attributes;
+		const { containerID, isFluid, marginAfter } = attributes;
 
 		// Ensure that isFluid value is set (when block gets added value is undefined -> use default value in this case)
 		if ( isFluid === undefined ) {
@@ -81,6 +95,17 @@ registerBlockType( 'wp-bootstrap-blocks/container', {
 							onChange={ ( selectedMargin ) => {
 								setAttributes( { marginAfter: selectedMargin } );
 							} }
+						/>
+					</PanelBody>
+					<PanelBody
+						title={ __('Container ID', 'wp-bootstrap-blocks') }
+						initialOpen={ false }
+					>
+						<ContainerIDField
+							label={ __('Unique ID of the html element', 'wp-bootstrap-blocks') }
+							attributeName="containerID"
+							value={ containerID }
+							setAttributes={ setAttributes }
 						/>
 					</PanelBody>
 				</InspectorControls>
