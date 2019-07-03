@@ -83,5 +83,7 @@ $classes = apply_filters( 'wp_bootstrap_blocks_column_classes', $classes, $attri
 ?>
 
 <div <?php if ( strlen( $id ) ) { ?>id="<?php echo esc_attr( $id ); ?>" <?php } ?>class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>">
-	<?php echo $content; // phpcs:ignore ?>
+- 	<div class="<?php echo esc_attr( implode( ' ', $column_content_classes ) ); ?>">
+- 		<?php echo $content; // phpcs:ignore ?>
+- 	</div>
 </div>

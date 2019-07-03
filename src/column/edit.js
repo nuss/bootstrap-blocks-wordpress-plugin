@@ -201,6 +201,14 @@ export default class BootstrapColumnEdit extends Component {
 									padding: value,
 								} );
 							} }
+							title={ __( 'Column ID', 'wp-bootstrap-blocks' ) }
+							initialOpen={ false }
+						/>
+						<ColumnIDField
+							label={ __( 'Column ID', 'wp-bootstrap-blocks' ) }
+							attributeName="columnID"
+							value={ columnID }
+							setAttributes={ setAttributes }
 						/>
 					</PanelBody>
 				</InspectorControls>
