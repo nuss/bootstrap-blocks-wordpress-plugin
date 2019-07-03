@@ -3,7 +3,7 @@
  */
 const { __ } = wp.i18n;
 const { InnerBlocks, InspectorControls } = wp.editor;
-const { CheckboxControl, ColorPalette, PanelBody, RangeControl, SelectControl } = wp.components;
+const { TextControl, CheckboxControl, ColorPalette, PanelBody, RangeControl, SelectControl } = wp.components;
 const { Component, Fragment } = wp.element;
 const { applyFilters } = wp.hooks;
 
@@ -14,8 +14,8 @@ const ColumnIDField = ( { label, attributeName, value, setAttributes } ) => {
 			value={ value }
 			onChange={ ( idString ) => {
 				setAttributes( {
-					[ attributeName ]: idString
-				} )
+					[ attributeName ]: idString,
+				} );
 			} }
 		/>
 	);
@@ -70,7 +70,7 @@ export default class BootstrapColumnEdit extends Component {
 			indentXs,
 			bgColor,
 			padding,
-			centerContent
+			centerContent,
 		} = attributes;
 
 		return (
@@ -92,7 +92,7 @@ export default class BootstrapColumnEdit extends Component {
 							value={ indentXl }
 							setAttributes={ setAttributes }
 						/>
-						<hr/>
+						<hr />
 						<ColumnSizeRangeControl
 							label={ __( 'Lg Columns', 'wp-bootstrap-blocks' ) }
 							attributeName="sizeLg"
@@ -105,7 +105,7 @@ export default class BootstrapColumnEdit extends Component {
 							value={ indentLg }
 							setAttributes={ setAttributes }
 						/>
-						<hr/>
+						<hr />
 						<ColumnSizeRangeControl
 							label={ __( 'Md Columns', 'wp-bootstrap-blocks' ) }
 							attributeName="sizeMd"
@@ -118,7 +118,7 @@ export default class BootstrapColumnEdit extends Component {
 							value={ indentMd }
 							setAttributes={ setAttributes }
 						/>
-						<hr/>
+						<hr />
 						<ColumnSizeRangeControl
 							label={ __( 'Sm Columns', 'wp-bootstrap-blocks' ) }
 							attributeName="sizeSm"
@@ -131,7 +131,7 @@ export default class BootstrapColumnEdit extends Component {
 							value={ indentSm }
 							setAttributes={ setAttributes }
 						/>
-						<hr/>
+						<hr />
 						<ColumnSizeRangeControl
 							label={ __( 'Xs Columns', 'wp-bootstrap-blocks' ) }
 							attributeName="sizeXs"
@@ -146,11 +146,11 @@ export default class BootstrapColumnEdit extends Component {
 						/>
 					</PanelBody>
 					<PanelBody
-						title={ __('Column ID', 'wp-bootstrap-blocks') }
+						title={ __( 'Column ID', 'wp-bootstrap-blocks' ) }
 						initialOpen={ false }
 					>
 						<ColumnIDField
-							label={ __('Unique ID of the html element', 'wp-bootstrap-blocks') }
+							label={ __( 'Unique ID of the html element', 'wp-bootstrap-blocks' ) }
 							attributeName="columnID"
 							value={ columnID }
 							setAttributes={ setAttributes }
